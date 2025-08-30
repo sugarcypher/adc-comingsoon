@@ -21,6 +21,424 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Build project
+        run: |
+          mkdir -p dist
+          cat > dist/index.html << "EOF"
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Allure du Chic - Coming Soon</title>
+              <meta name="description" content="An exclusive collection of made-to-order luxury pieces, crafted for the discerning few who appreciate true elegance.">
+              <meta name="author" content="Allure du Chic">
+              
+              <!-- Open Graph / Facebook -->
+              <meta property="og:type" content="website">
+              <meta property="og:url" content="https://sugarcypher.github.io/adc-comingsoon/">
+              <meta property="og:title" content="Allure du Chic - Coming Soon">
+              <meta property="og:description" content="An exclusive collection of made-to-order luxury pieces, crafted for the discerning few who appreciate true elegance.">
+              
+              <!-- Twitter -->
+              <meta property="twitter:card" content="summary_large_image">
+              <meta property="twitter:url" content="https://sugarcypher.github.io/adc-comingsoon/">
+              <meta property="twitter:title" content="Allure du Chic - Coming Soon">
+              <meta property="twitter:description" content="An exclusive collection of made-to-order luxury pieces, crafted for the discerning few who appreciate true elegance.">
+              
+              <style>
+                  * {
+                      margin: 0;
+                      padding: 0;
+                      box-sizing: border-box;
+                  }
+
+                  body {
+                      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                      line-height: 1.6;
+                      color: #fff;
+                      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+                      min-height: 100vh;
+                      overflow-x: hidden;
+                  }
+
+                  .container {
+                      max-width: 1200px;
+                      margin: 0 auto;
+                      padding: 20px;
+                      min-height: 100vh;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: center;
+                      align-items: center;
+                  }
+
+                  .gem-container {
+                      margin-bottom: 30px;
+                      animation: pulse 2s ease-in-out infinite;
+                  }
+
+                  .gem-outer {
+                      width: 60px;
+                      height: 60px;
+                      border-radius: 30px;
+                      background-color: rgba(184, 134, 11, 0.1);
+                      border: 1px solid rgba(184, 134, 11, 0.3);
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                  }
+
+                  .gem-icon {
+                      width: 32px;
+                      height: 32px;
+                      background: linear-gradient(45deg, #B8860B, #FFD700);
+                      -webkit-background-clip: text;
+                      -webkit-text-fill-color: transparent;
+                      background-clip: text;
+                  }
+
+                  .brand-name {
+                      font-size: 48px;
+                      font-weight: 200;
+                      letter-spacing: 12px;
+                      color: #B8860B;
+                      text-align: center;
+                      margin-bottom: -5px;
+                      animation: shimmer 3s ease-in-out infinite;
+                  }
+
+                  .brand-name-sub {
+                      font-size: 36px;
+                      font-weight: 200;
+                      letter-spacing: 8px;
+                      color: #B8860B;
+                      text-align: center;
+                      animation: shimmer 3s ease-in-out infinite;
+                  }
+
+                  .divider {
+                      width: 60px;
+                      height: 1px;
+                      background-color: rgba(184, 134, 11, 0.3);
+                      margin: 20px 0;
+                  }
+
+                  .tagline {
+                      font-size: 14px;
+                      letter-spacing: 4px;
+                      color: #999;
+                      margin-bottom: 8px;
+                      text-align: center;
+                  }
+
+                  .tagline-small {
+                      font-size: 12px;
+                      letter-spacing: 2px;
+                      color: #666;
+                      margin-bottom: 40px;
+                      text-align: center;
+                  }
+
+                  .coming-soon-container {
+                      text-align: center;
+                      margin-bottom: 40px;
+                  }
+
+                  .coming-soon {
+                      font-size: 24px;
+                      font-weight: 300;
+                      letter-spacing: 6px;
+                      color: #fff;
+                      margin-bottom: 20px;
+                  }
+
+                  .description {
+                      font-size: 14px;
+                      line-height: 22px;
+                      color: #999;
+                      text-align: center;
+                      max-width: 300px;
+                      margin: 0 auto;
+                  }
+
+                  .signup-container {
+                      width: 100%;
+                      max-width: 350px;
+                      text-align: center;
+                      margin-bottom: 40px;
+                  }
+
+                  .signup-title {
+                      font-size: 18px;
+                      font-weight: 300;
+                      letter-spacing: 2px;
+                      color: #fff;
+                      margin-bottom: 8px;
+                      text-align: center;
+                  }
+
+                  .signup-subtitle {
+                      font-size: 12px;
+                      color: #666;
+                      margin-bottom: 20px;
+                  }
+
+                  .input-container {
+                      width: 100%;
+                      background-color: rgba(255, 255, 255, 0.05);
+                      border-radius: 8px;
+                      border: 1px solid rgba(184, 134, 11, 0.2);
+                      overflow: hidden;
+                  }
+
+                  .input {
+                      width: 100%;
+                      height: 50px;
+                      padding: 0 20px;
+                      font-size: 14px;
+                      color: #fff;
+                      background: transparent;
+                      border: none;
+                      outline: none;
+                  }
+
+                  .input::placeholder {
+                      color: #666;
+                  }
+
+                  .submit-button {
+                      width: 100%;
+                      background: linear-gradient(45deg, #B8860B, #FFD700);
+                      padding: 15px 0;
+                      border: none;
+                      color: #000;
+                      font-size: 14px;
+                      font-weight: 600;
+                      letter-spacing: 2px;
+                      cursor: pointer;
+                      transition: all 0.3s ease;
+                  }
+
+                  .submit-button:hover {
+                      background: linear-gradient(45deg, #FFD700, #B8860B);
+                      transform: translateY(-2px);
+                      box-shadow: 0 5px 15px rgba(184, 134, 11, 0.3);
+                  }
+
+                  .success-message {
+                      padding: 20px 0;
+                      color: #B8860B;
+                      font-style: italic;
+                      font-size: 16px;
+                  }
+
+                  .social-container {
+                      display: flex;
+                      gap: 20px;
+                      justify-content: center;
+                      margin-bottom: 30px;
+                  }
+
+                  .social-button {
+                      width: 40px;
+                      height: 40px;
+                      border-radius: 20px;
+                      background-color: rgba(184, 134, 11, 0.1);
+                      border: 1px solid rgba(184, 134, 11, 0.2);
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      cursor: pointer;
+                      transition: all 0.3s ease;
+                  }
+
+                  .social-button:hover {
+                      background-color: rgba(184, 134, 11, 0.2);
+                      transform: translateY(-2px);
+                  }
+
+                  .social-icon {
+                      width: 20px;
+                      height: 20px;
+                      background: linear-gradient(45deg, #B8860B, #FFD700);
+                      -webkit-background-clip: text;
+                      -webkit-text-fill-color: transparent;
+                      background-clip: text;
+                  }
+
+                  .footer {
+                      font-size: 10px;
+                      color: #444;
+                      letter-spacing: 1px;
+                  }
+
+                  /* Animations */
+                  @keyframes pulse {
+                      0%, 100% { transform: scale(1); }
+                      50% { transform: scale(1.1); }
+                  }
+
+                  @keyframes shimmer {
+                      0%, 100% { opacity: 0.8; }
+                      50% { opacity: 1; }
+                  }
+
+                  @keyframes fadeInUp {
+                      from {
+                          opacity: 0;
+                          transform: translateY(30px);
+                      }
+                      to {
+                          opacity: 1;
+                          transform: translateY(0);
+                      }
+                  }
+
+                  .fade-in {
+                      animation: fadeInUp 1s ease-out forwards;
+                  }
+
+                  /* Responsive Design */
+                  @media (max-width: 768px) {
+                      .brand-name {
+                          font-size: 36px;
+                          letter-spacing: 8px;
+                      }
+                      
+                      .brand-name-sub {
+                          font-size: 28px;
+                          letter-spacing: 6px;
+                      }
+                      
+                      .coming-soon {
+                          font-size: 20px;
+                          letter-spacing: 4px;
+                      }
+                      
+                      .container {
+                          padding: 40px 20px;
+                      }
+                  }
+
+                  @media (max-width: 480px) {
+                      .brand-name {
+                          font-size: 28px;
+                          letter-spacing: 6px;
+                      }
+                      
+                      .brand-name-sub {
+                          font-size: 22px;
+                          letter-spacing: 6px;
+                      }
+                      
+                      .coming-soon {
+                          font-size: 18px;
+                          letter-spacing: 3px;
+                      }
+                  }
+              </style>
+          </head>
+          <body>
+              <div class="container">
+                  <div class="gem-container fade-in">
+                      <div class="gem-outer">
+                          <div class="gem-icon">✨</div>
+                      </div>
+                  </div>
+
+                  <div class="brand-name fade-in">ALLURE</div>
+                  <div class="brand-name-sub fade-in">DU CHIC</div>
+
+                  <div class="divider fade-in"></div>
+                  <div class="tagline fade-in">BESPOKE LUXURY</div>
+                  <div class="tagline-small fade-in">Made to Order • Made for You</div>
+
+                  <div class="coming-soon-container fade-in">
+                      <div class="coming-soon">COMING SOON</div>
+                      <div class="description">
+                          An exclusive collection of made-to-order luxury pieces,
+                          crafted for the discerning few who appreciate true elegance.
+                      </div>
+                  </div>
+
+                  <div class="signup-container fade-in">
+                      <div class="signup-title">Join Our VIP List</div>
+                      <div class="signup-subtitle">
+                          Be the first to experience exclusive access
+                      </div>
+                      
+                      <div class="input-container">
+                          <input type="email" class="input" id="emailInput" placeholder="Enter your email">
+                          <button class="submit-button" onclick="handleSubmit()">NOTIFY ME</button>
+                      </div>
+                      
+                      <div class="success-message" id="successMessage" style="display: none;">
+                          Welcome to the elite circle
+                      </div>
+                  </div>
+
+                  <div class="social-container fade-in">
+                      <div class="social-button">
+                          <div class="social-icon">📷</div>
+                      </div>
+                      <div class="social-button">
+                          <div class="social-icon">✉️</div>
+                      </div>
+                  </div>
+
+                  <div class="footer fade-in">© 2025 Allure du Chic. All rights reserved.</div>
+              </div>
+
+              <script>
+                  // Add fade-in animation to elements
+                  document.addEventListener("DOMContentLoaded", function() {
+                      const elements = document.querySelectorAll(".fade-in");
+                      elements.forEach((el, index) => {
+                          setTimeout(() => {
+                              el.style.opacity = "1";
+                          }, index * 200);
+                      });
+                  });
+
+                  // Handle email submission
+                  function handleSubmit() {
+                      const emailInput = document.getElementById("emailInput");
+                      const successMessage = document.getElementById("successMessage");
+                      const inputContainer = document.querySelector(".input-container");
+                      
+                      const email = emailInput.value.trim();
+                      
+                      if (!email || !email.includes("@")) {
+                          alert("Please enter a valid email address");
+                          return;
+                      }
+                      
+                      // Hide input container and show success message
+                      inputContainer.style.display = "none";
+                      successMessage.style.display = "block";
+                      
+                      // Clear input
+                      emailInput.value = "";
+                      
+                      // Reset after 3 seconds
+                      setTimeout(() => {
+                          inputContainer.style.display = "block";
+                          successMessage.style.display = "none";
+                      }, 3000);
+                  }
+
+                  // Handle Enter key in email input
+                  document.getElementById("emailInput").addEventListener("keypress", function(e) {
+                      if (e.key === "Enter") {
+                          handleSubmit();
+                      }
+                  });
+              </script>
+          </body>
+          </html>
+          EOF
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
